@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title> Rendu cours Webservice - Maxime Dezette I4 GR3</title>
+    <meta charset="utf-8">
+    <script src="jquery-3.3.1.js"></script>
+    <script src="script.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+</head>
+
+<!-- MENU -->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Rendu Maxime Dezette</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Accueil</a></li>
+            <li><a href="#">Choix technique</a></li>
+            <li><a href="#">A propos</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- CORPS -->
+
+<body>
+
+    <div class="container-fluid">
+        <!-- Message d'accueil-->
+        <blockquote>
+            <p> Bienvenue sur cette page de recherche. Indiquez le prénom et le nom de la personne
+                que vous souhaitez rechercher. Ex: Eric Goodman<br />
+                Note: si un champ est vide, il ne sera pas pris en compte dans votre recherche</p>
+        </blockquote>
+
+        <div class="row">
+            <!-- Critères-->
+            <div class="col-lg-6">
+                <h2>Critères</h2>
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <label for="firstname">Firstname:</label>
+                        <input type="text" class="form-control" id="firstname">
+                    </div>
+
+                    <div class="col-lg-12">
+                        <label for="lastname">Lastname:</label>
+                        <input type="text" class="form-control" id="lastname">
+                    </div>
+
+                    <div class="col-lg-12">
+                        <button type="button" class="btn btn-success" style="margin-top:15px;" id="chercher" onclick="showFirstResults()">Chercher</button>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- Résultats-->
+            <div class="col-lg-6 hidden" id="results">
+                <h2>Résultats</h2>
+
+            </div>
+            <div class="col-lg-offset-6 col-lg-6">
+
+                <div class="col-lg-2" id="precedent">
+                    <button type="button" class="btn btn-secondary hidden"  id="previous-Btn" onclick="showPreviousResults()">Précédent</button>
+                </div>
+                <div class="col-lg-2" id="suivant">
+                    <button type="button" class="btn btn-secondary hidden" id="next-Btn" onclick="showNextResults()">Suivant</button>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    </div>
+</body>
+
+
+
+
+</html>
