@@ -92,9 +92,9 @@ function renderTableResults() {
         url: $url
     }).then(function (data) {
         $.each(data, function (index, value) {
-            $('#tblData > tbody:last-child').append('<tr> <th>' + data[index].guid +
-                '</th> <th>' + data[index].first + '</th> <th>' + data[index].last +
-                '</th> <th></th> </tr>');
+            $('#tblData > tbody:last-child').append('<tr><td>' + data[index].guid +
+                '</td> <td>' + data[index].first + '</td> <td>' + data[index].last +
+                '</td></tr>');
         })
      if(data.length < $limit){
         $('#next-Btn').hide();
