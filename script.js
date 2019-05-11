@@ -1,16 +1,15 @@
 /**
  * URL of the called webservice
  */
-$webserviceURL="http://127.0.0.1:8000/";
+$webserviceURL="http://127.0.0.1:3000/";
 
 
 /**
  * methods called
  */
-$urlFindByLastNameAndFirstname = $webserviceURL + "find";
-$urlFindByLastName = $webserviceURL + "findByLastName";
-$urlFindByFirstName = $webserviceURL + "findByFirstName";
-$urlFindAll = $webserviceURL + "findAll";
+$urlFindAll = $webserviceURL + "albums";
+$urlCatalog = $webserviceURL + "catalog";
+
 $url = "";
 
 
@@ -18,7 +17,7 @@ $url = "";
 $offset = 0;
 
 // the number of results shown
-$limit = 10;
+$limit = 24;
 
 
 /**
@@ -29,23 +28,31 @@ $limit = 10;
  */
 function showResults() {
 
+    removeTableResults();
+	
+	$url = $urlFindAll + '/' + $offset + '/' + $limit;
 
-    var $firstName = $("#firstname").val();
-    var $lastName = $("#lastname").val();
+    renderTableResults()
+};
+
+
+/**
+ * Return the data of the people's searshed
+ * this function calls different's webservice's methods
+ * depending on the informations provided by the user?
+ * 
+ */
+function showCatalog() {
+    $offset = 0;
+    $limit = 4; 
 
     removeTableResults();
+	
+	$url = $urlCatalog + '/' + $offset + '/' + $limit;;
 
-    if ($firstName !== "" && $lastName !== "") {
-        $url = $urlFindByLastNameAndFirstname + "/" + $firstName + "/" + $lastName;
-    } else if ($lastName !== "") {
-        $url = $urlFindByLastName + "/" + $lastName;
-    } else if ($firstName !== "") {
-        $url = $urlFindByFirstName + "/" + $firstName;
-    } else {
-        $url = $urlFindAll;
-    }
-    $url = $url + "/" + $offset + "/" + $limit
     renderTableResults()
+
+    $('.hidden').removeClass('hidden');
 };
 
 
@@ -77,6 +84,7 @@ if($offset != 0){
  */
 }
 function showFirstResults(){
+    $limit = 24;
     $offset = 0;
     showResults();
     $('.hidden').removeClass('hidden');
@@ -92,10 +100,15 @@ function renderTableResults() {
         url: $url
     }).then(function (data) {
         $.each(data, function (index, value) {
-            $('#tblData > tbody:last-child').append('<tr><td>' + data[index].guid +
-                '</td> <td>' + data[index].first + '</td> <td>' + data[index].last +
-                '</td></tr>');
-        })
+			console.log(data[index]);
+            $('#tblData').append(
+                '<div class="col-lg-1" style="height:250px">' 
+                + '<div style="background-image: url(\'https://spark.adobe.com/images/landing/examples/design-music-album-cover.jpg\');height:50%;background-size: cover"></style></div>'
+                +'<p>'+ data[index].artiste +'</br>'
+                + data[index].nom +'</br>'
+                + data[index].annee +'</p>'
+            + '</div>'
+        );})
      if(data.length < $limit){
         $('#next-Btn').hide();
      }
@@ -113,7 +126,7 @@ function renderTableResults() {
 function removeTableResults() {
     $("#tblData").remove();
     $(
-        '<table id="tblData" class="table"><thead><tr><th>Guid</th><th>First</th><th>Last</th><th></th></tr> </thead><tbody></tbody></table>'
+        '<div id="tblData">'
     ).appendTo('#results');
 }
 
