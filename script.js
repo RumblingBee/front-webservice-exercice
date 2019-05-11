@@ -8,6 +8,7 @@ webserviceURL = "http://127.0.0.1:3000/";
  * methods called
  */
 urlAlbums = webserviceURL + "albums";
+urlArtists = webserviceURL + "artists";
 urlCatalogs = webserviceURL + "catalog";
 
 urlInit = "";
@@ -25,7 +26,18 @@ function initAlbums() {
 
     urlInit = urlAlbums;
 
-    limit = 24;
+    limit = 20;
+    offset = 0;
+
+    showResults();
+
+    $('.hidden').removeClass('hidden');
+}
+function initArtists() {
+
+    urlInit = urlArtists;
+
+    limit = 20;
     offset = 0;
 
     showResults();
@@ -147,7 +159,16 @@ function renderResult(data) {
         })
 
     } else if (urlInit.includes("artist")) {
-
+        $.each(data, function (index, value) {
+            console.log(data[index]);
+            $('#tblData').append(
+                '<div class="col-lg-3" style="height:250px">' +
+                '<p>' + data[index].nom + '</br>' +
+                data[index].pays + '</br>' +
+                data[index].genre + '</br>' +
+                '</div>'
+            );
+        })
     }
 
     if (data.length < limit) {
