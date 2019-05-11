@@ -41,42 +41,44 @@
         </blockquote>
 
         <div class="row">
-            <!-- Critères-->
-            <div class="col-lg-12">
-                <h2>Afficher</h2>
-                <div class="row">
 
-                    <div class="col-lg-12">
-                        <button type="button" class="btn btn-success" style="margin-top:15px;" id="chercher" onclick="showFirstResults()">Albums</button>
-                        <button type="button" class="btn btn-success" style="margin-top:15px;" id="catalogue" onclick="showCatalog()">Catalogue</button>
-                        <button type="button" class="btn btn-success" style="margin-top:15px;" id="catalogue" onclick="showCatalog()">Artistes</button>
-                    </div>
-
-                </div>
-
-            </div>
-            <!-- Résultats-->
-            <div class="col-lg-12 hidden" id="results">
-                <h2>Résultats</h2>
-
-            
-
-
-                </div>
-
-            <div class="col-lg-offset-6 col-lg-6">
-                <div class="row">
-
-                    <button type="button" class="btn btn-secondary hidden" id="previous-Btn" onclick="showPreviousResults()">Précédent</button>
-
-
-                    <button type="button" class="btn btn-secondary hidden" id="next-Btn" onclick="showNextResults()">Suivant</button>
-
+            <div class="col-lg-6  col-lg-offset-3">
+                <div class="col-lg-offset-3">
+                    <button type="button" class="btn btn-success" style="margin-top:15px;" id="chercher"
+                        onclick="initAlbums()">Albums</button>
+                    <button type="button" class="btn btn-success" style="margin-top:15px;" id="catalogue"
+                        onclick="initCatalogs()">Catalogue</button>
+                    <button type="button" class="btn btn-success" style="margin-top:15px;" id="catalogue"
+                        onclick="initArtists()">Artistes</button>
                 </div>
             </div>
+        </div>
 
+    </div>
+    <!-- Résultats-->
+    <div class="col-lg-6  col-lg-offset-3 hidden" id="results">
+        <h2>Résultats</h2>
+
+
+
+
+    </div>
+
+    <div class="col-lg-offset-6 col-lg-6">
+        <div class="row">
+
+            <button type="button" class="btn btn-secondary hidden" id="previous-Btn"
+                onclick="showPreviousResults()">Précédent</button>
+
+
+            <button type="button" class="btn btn-secondary hidden" id="next-Btn"
+                onclick="showNextResults()">Suivant</button>
 
         </div>
+    </div>
+
+
+    </div>
     </div>
     </div>
 </body>
