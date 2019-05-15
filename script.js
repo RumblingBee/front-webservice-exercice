@@ -135,10 +135,8 @@ function renderResult(data) {
     if (urlInit === urlAlbums) {
 
         $.each(data, function (index, value) {
-            console.log(data[index]);
             $('#tblData').append(
                 '<div class="col-lg-3" style="height:250px">' +
-                '<div style="background-image: url(\'https://spark.adobe.com/images/landing/examples/design-music-album-cover.jpg\');height:50%;background-size: cover"></style></div>' +
                 '<p>' + data[index].artiste + '</br>' +
                 data[index].nom + '</br>' +
                 data[index].annee + '</p>' +
@@ -147,10 +145,9 @@ function renderResult(data) {
         })
     } else if (urlInit === urlCatalogs) {
         $.each(data, function (index, value) {
-            console.log(data[index]);
             $('#tblData').append(
                 '<div class="col-lg-3" style="height:250px">' +
-                '<div style="background-image: url(\'https://spark.adobe.com/images/landing/examples/design-music-album-cover.jpg\');height:50%;background-size: cover"></style></div>' +
+                '<div style="background-image: url(' + data[index].image + ');height:50%;background-size: cover"></style></div>' +
                 '<p>' + data[index].nom + '</br>' +
                 data[index].artiste + '</br>' +
                 data[index].prix + '€ </br>' +
@@ -160,7 +157,6 @@ function renderResult(data) {
 
     } else if (urlInit.includes("artist")) {
         $.each(data, function (index, value) {
-            console.log(data[index]);
             $('#tblData').append(
                 '<div class="col-lg-3" style="height:250px">' +
                 '<p>' + data[index].nom + '</br>' +
